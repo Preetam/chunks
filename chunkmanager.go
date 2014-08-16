@@ -1,4 +1,4 @@
-package txfun
+package chunks
 
 import (
 	"fmt"
