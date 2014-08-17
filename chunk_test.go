@@ -10,7 +10,7 @@ import (
 func TestChunk(t *testing.T) {
 	const N = 1e3
 
-	f, err := ioutil.TempFile(os.TempDir(), "chunk_")
+	f, err := ioutil.TempFile(os.TempDir()+"/chunks", "c.")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -19,7 +19,7 @@ func TestChunk(t *testing.T) {
 		file: f,
 	}
 
-	f2, err := ioutil.TempFile(os.TempDir(), "chunk_")
+	f2, err := ioutil.TempFile(os.TempDir()+"/chunks", "c.")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -28,7 +28,7 @@ func TestChunk(t *testing.T) {
 		file: f2,
 	}
 
-	f3, err := ioutil.TempFile(os.TempDir(), "chunk_")
+	f3, err := ioutil.TempFile(os.TempDir()+"/chunks", "c.")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -66,4 +66,6 @@ func TestChunk(t *testing.T) {
 
 		cur.next()
 	}
+
+	os.RemoveAll(os.TempDir() + "/chunks")
 }
